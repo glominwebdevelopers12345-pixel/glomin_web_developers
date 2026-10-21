@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | GLOMIN</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f9ff;
+            color: #17233d;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+
+        nav {
+            min-height: 80px;
+            padding: 18px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5ecf6;
+            box-shadow: 0 4px 20px rgba(20, 60, 120, 0.04);
+        }
+
+        .logo {
+            color: #1765e8;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #17233d;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #536078;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1765e8;
+        }
+
+        .nav-links .nav-cta {
+            padding: 11px 19px;
+            background: #1765e8;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: #104db9;
+            color: white;
+        }
+
+        /* Hero Section */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 85px 8% 75px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 15% 20%,
+                    rgba(23, 101, 232, 0.09),
+                    transparent 32%),
+                radial-gradient(circle at 85% 80%,
+                    rgba(23, 101, 232, 0.08),
+                    transparent 30%),
+                #ffffff;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: auto;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 9px 17px;
+            margin-bottom: 23px;
+            border: 1px solid #dce7ff;
+            border-radius: 30px;
+            background: #eaf1ff;
+            color: #1765e8;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            margin-bottom: 22px;
+            color: #17233d;
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #1765e8;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: #69768d;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        /* Main Content */
+
+        .about-section {
+            padding: 75px 8%;
+        }
+
+        .about-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .section-label {
+            display: block;
+            margin-bottom: 12px;
+            color: #1765e8;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+            color: #17233d;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.3;
+            letter-spacing: -1px;
+        }
+
+        .section-title span {
+            color: #1765e8;
+        }
+
+        .intro {
+            max-width: 760px;
+            margin-bottom: 35px;
+            color: #718098;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        /* About Card */
+
+        .main-card {
+            padding: 42px;
+            border: 1px solid #e2eaf6;
+            border-radius: 22px;
+            background: #ffffff;
+            box-shadow: 0 10px 40px rgba(24, 60, 110, 0.05);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+            animation: fadeUp 0.9s ease both;
+        }
+
+        .main-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(23, 101, 232, 0.09);
+        }
+
+        .main-card p {
+            margin-bottom: 19px;
+            color: #5d6b82;
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .main-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .main-card strong {
+            color: #1765e8;
+        }
+
+        .closing-message {
+            margin-top: 32px;
+            padding: 25px 28px;
+            border-left: 4px solid #1765e8;
+            border-radius: 0 12px 12px 0;
+            background: #edf3ff;
+            color: #23436f;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.9;
+        }
+
+        /* Values Section */
+
+        .values-section {
+            padding: 75px 8%;
+            background: #ffffff;
+        }
+
+        .values-heading {
+            max-width: 650px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .values-heading h2 {
+            margin: 12px 0;
+            color: #17233d;
+            font-size: clamp(29px, 4vw, 40px);
+            letter-spacing: -1px;
+        }
+
+        .values-heading p {
+            color: #718098;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .value-card {
+            padding: 28px 25px;
+            border: 1px solid #e3eaf5;
+            border-radius: 17px;
+            background: #ffffff;
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-7px);
+            border-color: #bdd1ff;
+            box-shadow: 0 15px 35px rgba(23, 101, 232, 0.08);
+        }
+
+        .value-icon {
+            display: grid;
+            place-items: center;
+            width: 49px;
+            height: 49px;
+            margin-bottom: 20px;
+            border-radius: 13px;
+            background: #eaf1ff;
+            color: #1765e8;
+            font-size: 23px;
+        }
+
+        .value-card h3 {
+            margin-bottom: 10px;
+            color: #17233d;
+            font-size: 19px;
+        }
+
+        .value-card p {
+            color: #718098;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Contact Banner */
+
+        .cta-section {
+            padding: 0 8% 80px;
+            background: #ffffff;
+        }
+
+        .cta-box {
+            max-width: 1150px;
+            margin: auto;
+            padding: 50px 25px;
+            border-radius: 22px;
+            background: linear-gradient(130deg, #102a56, #1765e8);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            margin-bottom: 15px;
+            font-size: clamp(27px, 4vw, 38px);
+            letter-spacing: -1px;
+        }
+
+        .cta-box p {
+            max-width: 580px;
+            margin: 0 auto 27px;
+            color: #d7e5ff;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 23px;
+            border: 1px solid #ffffff;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #1765e8;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #eaf1ff;
+        }
+
+        .btn span {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover span {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 28px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #f6f9ff;
+            border-top: 1px solid #e3eaf5;
+        }
+
+        .footer-logo {
+            color: #1765e8;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        footer p {
+            color: #8490a4;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #536078;
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #1765e8;
+        }
+
+        /* Animation */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tablet */
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 18px 5%;
+            }
+
+            .about-section,
+            .values-section {
+                padding: 60px 5%;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cta-section {
+                padding: 0 5% 60px;
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 620px) {
+            nav {
+                flex-direction: column;
+                padding: 20px 5%;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .nav-links .nav-cta {
+                padding: 9px 12px;
+            }
+
+            .hero {
+                padding: 65px 6%;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.3px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .about-section,
+            .values-section {
+                padding: 50px 5%;
+            }
+
+            .main-card {
+                padding: 26px 22px;
+            }
+
+            .main-card p {
+                font-size: 14px;
+            }
+
+            .closing-message {
+                padding: 20px;
+                font-size: 14px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 0 5% 50px;
+            }
+
+            .cta-box {
+                padding: 38px 22px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px 5%;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+        <a href="glomin_main2.html" class="logo">GLO<span>MIN</span></a>
+
+        <div class="nav-links">
+            <a href="glomin_main2.html">Home</a>
+            <a href="about us.html" class="active">About Us</a>
+            <a href="contact us.html">Contact</a>
+            <a href="pricing.html" class="nav-cta">View Pricing ↗</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <header class="hero">
+        <div class="hero-content">
+
+            <span class="tag">GET TO KNOW GLOMIN</span>
+
+            <h1>
+                We Believe in Building<br>
+                <span>Tomorrow, Today.</span>
+            </h1>
+
+            <p>
+                At GLOMIN, we believe the future belongs to those who dare
+                to create it. We combine curiosity, creativity and technology
+                to transform ambitious ideas into meaningful digital solutions.
+            </p>
+
+        </div>
+    </header>
+
+    <!-- About Content -->
+
+    <section class="about-section">
+
+        <div class="about-container">
+
+            <span class="section-label">Who We Are</span>
+
+            <h2 class="section-title">
+                More Than Ideas.<br>
+                <span>A Vision for the Future.</span>
+            </h2>
+
+            <p class="intro">
+                Our journey is built on learning, experimenting and improving
+                every day. We believe meaningful innovation happens when
+                creative thinking meets practical execution.
+            </p>
+
+            <div class="main-card">
+
+                <p>
+                    At <strong>GLOMIN</strong>, we believe the future belongs
+                    to those who dare to create it.
+                </p>
+
+                <p>
+                    We are driven by curiosity and a passion for solving
+                    real-world problems. We strive to make technology more
+                    powerful, practical and user-friendly.
+                </p>
+
+                <p>
+                    Our journey is built on learning, experimenting and
+                    improving every day. We believe innovation is not just
+                    about ideas but also about execution.
+                </p>
+
+                <p>
+                    We aim to develop digital products that bring value to
+                    people and businesses. We welcome new challenges that
+                    inspire us to think differently.
+                </p>
+
+                <p>
+                    Our approach combines creativity, logic and technical
+                    expertise. We believe small ideas can lead to extraordinary
+                    breakthroughs, and we are passionate about exploring the
+                    endless possibilities of technology.
+                </p>
+
+                <p>
+                    We focus on creating smooth, engaging and meaningful user
+                    experiences. We believe great products are built by
+                    understanding people's needs and combining simplicity
+                    with innovation.
+                </p>
+
+                <p>
+                    We are committed to improving our skills and expanding
+                    our knowledge. We see technology as a tool for unlocking
+                    human potential, and we encourage bold thinking and
+                    fresh perspectives.
+                </p>
+
+                <p>
+                    Our team works toward turning ambitious concepts into
+                    working solutions. We believe progress comes from
+                    persistence, experimentation and teamwork.
+                </p>
+
+                <p>
+                    We strive to create products that are both functional
+                    and inspiring. We believe the best solutions emerge
+                    when creativity meets engineering.
+                </p>
+
+                <p>
+                    Our focus is on building a strong foundation for long-term
+                    innovation. We continuously seek better ways to design,
+                    develop and deliver technology.
+                </p>
+
+                <p>
+                    We aim to make every digital interaction simple and
+                    enjoyable. We believe trust and transparency are essential
+                    to meaningful partnerships.
+                </p>
+
+                <p>
+                    We are excited by the opportunities that emerging
+                    technologies bring. We want our work to inspire others
+                    to explore their own creative potential.
+                </p>
+
+                <p>
+                    We approach every project with purpose, dedication and
+                    attention to detail. We believe the journey of innovation
+                    never truly ends.
+                </p>
+
+                <p>
+                    We are committed to learning from every success and
+                    every challenge.
+                </p>
+
+                <div class="closing-message">
+                    At GLOMIN, we are not just imagining tomorrow;
+                    we are working to build it.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Our Values -->
+
+    <section class="values-section">
+
+        <div class="values-heading">
+
+            <span class="section-label">What Drives Us</span>
+
+            <h2>Our Core Values</h2>
+
+            <p>
+                The principles that guide our thinking, shape our work
+                and inspire us to build better digital experiences.
+            </p>
+
+        </div>
+
+        <div class="values-grid">
+
+            <article class="value-card">
+                <div class="value-icon">✦</div>
+                <h3>Innovation</h3>
+                <p>
+                    We explore new possibilities and turn creative ideas
+                    into practical solutions.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <div class="value-icon">◎</div>
+                <h3>User First</h3>
+                <p>
+                    We focus on people's needs to create simple,
+                    useful and enjoyable experiences.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <div class="value-icon">↗</div>
+                <h3>Continuous Growth</h3>
+                <p>
+                    We learn, experiment and improve to build stronger
+                    skills and better products.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <div class="value-icon">◇</div>
+                <h3>Creativity</h3>
+                <p>
+                    We welcome fresh perspectives and think beyond
+                    conventional approaches.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <div class="value-icon">✓</div>
+                <h3>Quality</h3>
+                <p>
+                    We value thoughtful design, reliable functionality
+                    and attention to detail.
+                </p>
+            </article>
+
+            <article class="value-card">
+                <div class="value-icon">∞</div>
+                <h3>Long-Term Vision</h3>
+                <p>
+                    We build with purpose and look for opportunities
+                    to create lasting value.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- Contact Call to Action -->
+
+    <section class="cta-section">
+
+        <div class="cta-box">
+
+            <h2>Let's Build Something Extraordinary.</h2>
+
+            <p>
+                Have an idea, a challenge or a vision for the future?
+                Let's connect and explore how we can turn it into
+                something meaningful.
+            </p>
+
+            <a href="contact us.html" class="btn">
+                Contact GLOMIN <span>→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-logo">GLOMIN</div>
+
+        <p>© 2026 GLOMIN. All rights reserved.</p>
+
+        <div class="footer-links">
+            <a href="glomin_main2.html">Home</a>
+            <a href="about us.html">About Us</a>
+            <a href="contact us.html">Contact</a>
+            <a href="pricing.html">Pricing</a>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

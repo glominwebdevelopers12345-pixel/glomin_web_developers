@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GLOMIN | Pricing Plans</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f9ff;
+            color: #17233d;
+        }
+
+        .pricing {
+            padding: 80px 7%;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 30px;
+            background: #e4edff;
+            color: #1765e8;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            margin: 24px 0 16px;
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: #1765e8;
+        }
+
+        .subtitle {
+            max-width: 620px;
+            margin: 0 auto 55px;
+            color: #68758b;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border: 1px solid #e3eaf5;
+            border-radius: 20px;
+            padding: 30px 25px;
+            transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #b9d0ff;
+            box-shadow: 0 20px 45px rgba(23, 101, 232, 0.10);
+        }
+
+        .card.featured {
+            border: 2px solid #1765e8;
+            box-shadow: 0 12px 35px rgba(23, 101, 232, 0.10);
+        }
+
+        .popular {
+            position: absolute;
+            top: -14px;
+            right: 20px;
+            background: #1765e8;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 8px 13px;
+            border-radius: 20px;
+        }
+
+        .number {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 22px;
+            border-radius: 14px;
+            background: #edf3ff;
+            color: #1765e8;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .card h2 {
+            font-size: 21px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            min-height: 48px;
+            color: #778298;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .price {
+            margin: 24px 0;
+            color: #1765e8;
+            font-size: clamp(23px, 2.2vw, 30px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .price small {
+            display: block;
+            margin-top: 8px;
+            color: #8994a8;
+            font-size: 12px;
+            font-weight: normal;
+            letter-spacing: 0;
+        }
+
+        .line {
+            height: 1px;
+            margin-bottom: 23px;
+            background: #edf0f6;
+        }
+
+        .features {
+            flex-grow: 1;
+            list-style: none;
+            margin-bottom: 28px;
+        }
+
+        .features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 16px;
+            color: #536078;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #1765e8;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #1765e8;
+            border-radius: 10px;
+            background: #1765e8;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s ease,
+                color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #104db9;
+            border-color: #104db9;
+        }
+
+        .arrow {
+            display: inline-block;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* Contact section */
+
+        .contact {
+            max-width: 1200px;
+            margin: 70px auto 0;
+            padding: 55px 25px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #102a56, #1765e8);
+            color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .contact-label {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            color: #dce8ff;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+
+        .contact h2 {
+            margin-bottom: 18px;
+            font-size: clamp(27px, 4vw, 40px);
+            letter-spacing: -1px;
+        }
+
+        .contact p {
+            max-width: 600px;
+            margin: 0 auto 28px;
+            color: #d4e2ff;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .contact strong {
+            color: #ffffff;
+        }
+
+        .contact .btn {
+            display: inline-flex;
+            width: auto;
+            padding: 15px 25px;
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #1765e8;
+        }
+
+        .contact .btn:hover {
+            background: #e8f0ff;
+            border-color: #e8f0ff;
+        }
+
+        footer {
+            padding: 30px 15px 0;
+            color: #8a95a9;
+            font-size: 12px;
+            line-height: 1.9;
+            text-align: center;
+        }
+
+        /* Tablet */
+
+        @media (max-width: 950px) {
+            .pricing {
+                padding: 65px 5%;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 22px;
+            }
+
+            .price {
+                font-size: 27px;
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+            .pricing {
+                padding: 50px 5%;
+            }
+
+            h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 45px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .card {
+                padding: 28px 23px;
+            }
+
+            .price {
+                font-size: 29px;
+            }
+
+            .contact {
+                margin-top: 50px;
+                padding: 40px 22px;
+            }
+
+            .contact p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="pricing">
+
+        <span class="tag">SIMPLE. TRANSPARENT. POWERFUL.</span>
+
+        <h1>Plans & <span>Pricing</span></h1>
+
+        <p class="subtitle">
+            From stunning websites to powerful applications,
+            GLOMIN turns your ideas into digital experiences.
+            Choose the right solution for your next big idea.
+        </p>
+
+        <div class="pricing-grid">
+
+            <!-- 1. Simple Websites -->
+            <div class="card">
+                <div class="number">01</div>
+
+                <h2>Simple Websites</h2>
+
+                <p class="description">
+                    A clean and professional online presence for your ideas.
+                </p>
+
+                <div class="price">$11–$57
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Modern website design</li>
+                    <li>Mobile-friendly layout</li>
+                    <li>Essential website pages</li>
+                    <li>Perfect for personal projects</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 2. Business Websites -->
+            <div class="card">
+                <div class="number">02</div>
+
+                <h2>Business Websites</h2>
+
+                <p class="description">
+                    Build trust and showcase your business online.
+                </p>
+
+                <div class="price">$57–$170
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Professional business design</li>
+                    <li>About and services pages</li>
+                    <li>Contact section</li>
+                    <li>Responsive across devices</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 3. E-commerce Websites -->
+            <div class="card featured">
+                <span class="popular">POPULAR</span>
+
+                <div class="number">03</div>
+
+                <h2>E-commerce Websites</h2>
+
+                <p class="description">
+                    Launch your online store and sell products.
+                </p>
+
+                <div class="price">$227–$568
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Product catalogue</li>
+                    <li>Shopping cart</li>
+                    <li>Checkout integration</li>
+                    <li>Online shopping experience</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 4. Custom Web Applications -->
+            <div class="card">
+                <div class="number">04</div>
+
+                <h2>Custom Web Applications</h2>
+
+                <p class="description">
+                    Tailor-made digital tools designed around your needs.
+                </p>
+
+                <div class="price">$682–$2,273
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Custom functionality</li>
+                    <li>User accounts and dashboards</li>
+                    <li>Database integration</li>
+                    <li>Scalable architecture</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 5. Custom Mobile Apps -->
+            <div class="card">
+                <div class="number">05</div>
+
+                <h2>Custom Mobile Apps</h2>
+
+                <p class="description">
+                    Bring your business directly to users' phones.
+                </p>
+
+                <div class="price">$2,273–$5,682
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Custom app interface</li>
+                    <li>Core app functionality</li>
+                    <li>Backend integration</li>
+                    <li>Features tailored to your idea</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 6. Uber-like Applications -->
+            <div class="card">
+                <div class="number">06</div>
+
+                <h2>Uber-like Applications</h2>
+
+                <p class="description">
+                    Complex on-demand platforms built for scale.
+                </p>
+
+                <div class="price">$11,364–$68,182
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Customer and provider apps</li>
+                    <li>Live location features</li>
+                    <li>Booking and tracking</li>
+                    <li>Advanced backend systems</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 7. Food Delivery Apps -->
+            <div class="card">
+                <div class="number">07</div>
+
+                <h2>Food Delivery Apps</h2>
+
+                <p class="description">
+                    Connect customers, restaurants and delivery partners.
+                </p>
+
+                <div class="price">$5,682–$9,091
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Restaurant listings</li>
+                    <li>Food ordering system</li>
+                    <li>Order status tracking</li>
+                    <li>Delivery management</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- 8. Shopping Apps -->
+            <div class="card">
+                <div class="number">08</div>
+
+                <h2>Shopping Apps</h2>
+
+                <p class="description">
+                    Create a complete mobile shopping experience.
+                </p>
+
+                <div class="price">$9,091–$14,773
+                    <small>Project-based pricing</small>
+                </div>
+
+                <div class="line"></div>
+
+                <ul class="features">
+                    <li>Product discovery</li>
+                    <li>Cart and checkout</li>
+                    <li>Order management</li>
+                    <li>Customer account features</li>
+                </ul>
+
+                <a href="contact us.html" class="btn">
+                    Get Started <span class="arrow">→</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Contact section -->
+        <div class="contact" id="contact">
+
+            <span class="contact-label">LET'S BUILD SOMETHING GREAT</span>
+
+            <h2>Have a Bigger Idea?</h2>
+
+            <p>
+                Every project is unique. Tell us what you have in mind,
+                and let's find the right solution for your budget.
+                <br><br>
+                <strong>Please contact us for better deals!</strong>
+            </p>
+
+            <a href="contact us.html" class="btn">
+                Contact Us <span class="arrow">→</span>
+            </a>
+
+        </div>
+
+        <footer>
+            © 2026 GLOMIN. All rights reserved.
+            <br>
+            Final pricing depends on project requirements, features and scope.
+            <br>
+            Prices are approximate USD conversions and may be adjusted.
+        </footer>
+
+    </section>
+
+</body>
+
+</html>

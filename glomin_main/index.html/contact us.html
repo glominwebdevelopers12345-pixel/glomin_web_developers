@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071426">
+
+    <title>Contact Us | GLOMIN</title>
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #1677ff;
+            --blue-light: #60a5fa;
+            --blue-dark: #0754c7;
+            --white: #ffffff;
+            --text: #eaf2ff;
+            --muted: #a9bad2;
+            --border: rgba(148, 180, 220, 0.2);
+            --card: rgba(16, 37, 66, 0.8);
+            --background: #071426;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* BACKGROUND EFFECTS */
+        .background-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glow-one {
+            background: #087cff;
+            top: -150px;
+            left: -100px;
+        }
+
+        .glow-two {
+            background: #3159ff;
+            right: -150px;
+            bottom: -100px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(7, 20, 38, 0.75);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--blue-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #c8d6e9;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #60a5fa;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 19px;
+            color: white;
+            background: var(--blue);
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 20px rgba(22, 119, 255, 0.2);
+        }
+
+        .nav-button:hover {
+            background: #368bff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(22, 119, 255, 0.35);
+        }
+
+        /* MAIN CONTACT SECTION */
+        .contact {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 25px 100px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 15px;
+            margin-bottom: 23px;
+            color: #91c4ff;
+            background: rgba(22, 119, 255, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #60a5fa;
+            box-shadow: 0 0 12px #60a5fa;
+        }
+
+        .heading h1 {
+            font-size: clamp(36px, 5.5vw, 65px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+            color: white;
+        }
+
+        .heading h1 span {
+            background: linear-gradient(90deg, #60a5fa, #a5cfff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .heading>p {
+            max-width: 570px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 16px;
+        }
+
+        /* CONTACT LAYOUT */
+        .contact-box {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 45px;
+            padding: 42px;
+            background: linear-gradient(145deg,
+                    rgba(20, 43, 74, 0.9),
+                    rgba(10, 26, 48, 0.92));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.22);
+        }
+
+        /* LEFT CONTACT INFORMATION */
+        .info {
+            padding: 10px 0;
+        }
+
+        .info h2,
+        .form h2 {
+            font-size: 25px;
+            color: white;
+            margin-bottom: 17px;
+        }
+
+        .info-intro {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 17px;
+            margin-bottom: 35px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 17px;
+            border: 1px solid rgba(148, 180, 220, 0.13);
+            border-radius: 13px;
+            background: rgba(255, 255, 255, 0.025);
+            transition: 0.3s ease;
+        }
+
+        .info-item:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            background: rgba(22, 119, 255, 0.07);
+            transform: translateX(4px);
+        }
+
+        .info-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            color: #8dc2ff;
+            background: rgba(22, 119, 255, 0.14);
+            font-size: 21px;
+        }
+
+        .info-item h3 {
+            color: white;
+            font-size: 14px;
+            margin: 2px 0 8px;
+        }
+
+        .info-item p,
+        .info-item a {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .info-item a:hover {
+            color: #8dc2ff;
+        }
+
+        .info-note {
+            padding: 19px;
+            border-radius: 13px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            background: rgba(22, 119, 255, 0.07);
+        }
+
+        .info-note h3 {
+            font-size: 14px;
+            margin-bottom: 9px;
+            color: #b8d9ff;
+        }
+
+        .info-note p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* FORM CARD */
+        .form-card {
+            padding: 32px;
+            background: #f8fbff;
+            border-radius: 19px;
+            color: #10213a;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .form h2 {
+            color: #10213a;
+            font-size: 25px;
+            margin-bottom: 9px;
+        }
+
+        .form-description {
+            color: #65748b;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 27px;
+        }
+
+        .form label {
+            display: block;
+            color: #243852;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .form input,
+        .form select,
+        .form textarea {
+            width: 100%;
+            padding: 14px 15px;
+            margin-bottom: 20px;
+            background: white;
+            border: 1px solid #d9e2ef;
+            border-radius: 9px;
+            color: #10213a;
+            font: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .form input::placeholder,
+        .form textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .form input:focus,
+        .form select:focus,
+        .form textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.11);
+        }
+
+        .form textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.6;
+        }
+
+        .form select {
+            cursor: pointer;
+        }
+
+        /* SEND BUTTON */
+        .send-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 22px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1677ff, #0754c7);
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(22, 119, 255, 0.2);
+            transition: 0.3s ease;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(22, 119, 255, 0.3);
+            background: linear-gradient(135deg, #328aff, #1265d8);
+        }
+
+        .send-button span {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .send-button:hover span {
+            transform: translateX(4px);
+        }
+
+        .form-footnote {
+            text-align: center;
+            color: #7b8ba2;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-top: 17px;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 25px 7%;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            color: #91a3bb;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #a9cfff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 850px) {
+            nav {
+                padding: 20px 5%;
+            }
+
+            .nav-links {
+                gap: 17px;
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                padding: 28px;
+            }
+
+            .info {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-button {
+                padding: 11px 15px;
+            }
+
+            .contact {
+                padding: 60px 16px 70px;
+            }
+
+            .heading {
+                margin-bottom: 35px;
+            }
+
+            .heading h1 {
+                letter-spacing: -1px;
+            }
+
+            .contact-box {
+                padding: 20px;
+                border-radius: 18px;
+            }
+
+            .form-card {
+                padding: 23px 18px;
+            }
+
+            footer {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+            *,
+            *::before,
+            
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="glomin_main.html" class="logo">GLO<span>MIN</span></a>
+
+        <div class="nav-links">
+            <a href="glomin_main2.html">Home</a>
+            <a href="about us.html">About Us</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact us.html" class="active">Contact</a>
+        </div>
+
+        <a href="" class="nav-button">
+            Let's Talk <span aria-hidden="true">↗</span>
+        </a>
+    </nav>
+
+    <!-- CONTACT SECTION -->
+    <main class="contact">
+
+        <header class="heading">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                GET IN TOUCH
+            </div>
+
+            <h1>Let's Build <span>Something Great.</span></h1>
+
+            <p>
+                Have an idea, a project, or a question?
+                We'd love to hear from you. Tell us what you're
+                thinking, and let's explore what's possible.
+            </p>
+        </header>
+
+        <section class="contact-box">
+
+            <!-- CONTACT INFORMATION -->
+            <div class="info">
+                <h2>Let's start a conversation.</h2>
+
+                <p class="info-intro">
+                    Whether you have a project in mind, want to
+                    collaborate, or simply need more information,
+                    we're here to help.
+                </p>
+
+                <div class="info-list">
+
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">✉</div>
+
+                        <div>
+                            <h3>Email Us</h3>
+                            <a href="mailto:glomin.web.developers12345@gmail.com">                                            
+                                glomin.web.developers12345@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">✦</div>
+
+                        <div>
+                            <h3>Project Inquiries</h3>
+                            <p>
+                                Share your project ideas, goals,
+                                and questions with us.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon" aria-hidden="true">↗</div>
+
+                        <div>
+                            <h3>Collaboration</h3>
+                            <p>
+                                Interested in working together?
+                                We'd be happy to hear from you.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="info-note">
+                    <h3>We're happy to hear from you.</h3>
+                    <p>
+                        For payments, project ideas, or other
+                        inquiries, you can email us directly.
+                        Please include enough details so we can
+                        understand how to help.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div class="form-card" id="contact-form">
+            
+            <form id="contactForm">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." rows="5" required></textarea>
+            
+                <button type="submit">Send Message →</button>
+            </form>
+            
+            <style>
+                #contactForm {
+                    max-width: 500px;
+                    margin: 30px auto;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    font-family: Arial, sans-serif;
+                }
+            
+                #contactForm label {
+                    color: #183153;
+                    font-weight: 600;
+                }
+            
+                #contactForm input,
+                #contactForm textarea {
+                    width: 100%;
+                    padding: 14px;
+                    border: 1px solid #d5dfed;
+                    border-radius: 8px;
+                    font: inherit;
+                }
+            
+                #contactForm input:focus,
+                #contactForm textarea:focus {
+                    outline: 2px solid #80baff;
+                    border-color: #0878e8;
+                }
+            
+                #contactForm button {
+                    padding: 14px 20px;
+                    border: none;
+                    border-radius: 8px;
+                    background: #0878e8;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            
+                #contactForm button:hover {
+                    background: #075dc4;
+                }
+            </style>
+            
+            <script src="script.js"></script>
+            
+            </div>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 GLOMIN. All rights reserved.</p>
+
+        <p>
+            Have a question?
+            <a href="https://mail.google.com/.">
+                Email us
+            </a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

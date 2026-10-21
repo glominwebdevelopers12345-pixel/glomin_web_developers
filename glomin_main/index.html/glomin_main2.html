@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GLOMIN | Innovate Beyond Limits</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f9ff;
+      color: #17233d;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+
+    nav {
+      width: 100%;
+      min-height: 82px;
+      padding: 18px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border-bottom: 1px solid #e8edf6;
+      box-shadow: 0 4px 20px rgba(20, 60, 120, 0.04);
+    }
+
+    .logo {
+      color: #1765e8;
+      font-size: 29px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #17233d;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: #536078;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #1765e8;
+    }
+
+    .nav-links .nav-cta {
+      padding: 11px 20px;
+      background: #1765e8;
+      color: white;
+      border-radius: 8px;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: #104db9;
+      color: white;
+    }
+
+    /* Hero Section */
+
+    .hero {
+      min-height: 490px;
+      padding: 85px 8% 95px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 20%,
+          rgba(23, 101, 232, 0.09),
+          transparent 32%),
+        radial-gradient(circle at 90% 80%,
+          rgba(23, 101, 232, 0.08),
+          transparent 30%),
+        #ffffff;
+    }
+
+    .hero-content {
+      max-width: 820px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 9px 17px;
+      margin-bottom: 24px;
+      background: #eaf1ff;
+      color: #1765e8;
+      border: 1px solid #dce7ff;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+      color: #17233d;
+    }
+
+    .hero h1 span {
+      color: #1765e8;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto 32px;
+      color: #69768d;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 23px;
+      border: 1px solid #1765e8;
+      border-radius: 9px;
+      background: #1765e8;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #104db9;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(23, 101, 232, 0.2);
+    }
+
+    .btn-outline {
+      background: white;
+      color: #1765e8;
+    }
+
+    .btn-outline:hover {
+      background: #edf3ff;
+      color: #104db9;
+    }
+
+    .arrow {
+      font-size: 19px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover .arrow {
+      transform: translateX(5px);
+    }
+
+    /* Main Section */
+
+    .main-section {
+      padding: 80px 8%;
+      background: #f6f9ff;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 48px;
+    }
+
+    .section-label {
+      color: #1765e8;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 14px 0;
+      color: #17233d;
+      font-size: clamp(29px, 4vw, 40px);
+      line-height: 1.25;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: #718098;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* Cards */
+
+    .whole {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e3eaf5;
+      border-radius: 18px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      box-shadow: 0 5px 25px rgba(24, 60, 110, 0.035);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-9px);
+      border-color: #bdd1ff;
+      box-shadow: 0 20px 45px rgba(23, 101, 232, 0.10);
+    }
+
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 25px;
+      border-radius: 16px;
+      background: #eaf1ff;
+      color: #1765e8;
+    }
+
+    .card-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card h2 {
+      margin-bottom: 13px;
+      color: #17233d;
+      font-size: 23px;
+      letter-spacing: -0.5px;
+    }
+
+    .card p {
+      flex-grow: 1;
+      margin-bottom: 25px;
+      color: #718098;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .card .btn {
+      width: 100%;
+      padding: 13px 16px;
+    }
+
+    /* Bottom CTA */
+
+    .bottom-cta {
+      padding: 0 8% 85px;
+      background: #f6f9ff;
+    }
+
+    .cta-box {
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 25px;
+      border-radius: 22px;
+      background: linear-gradient(130deg, #102a56, #1765e8);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      margin-bottom: 15px;
+      font-size: clamp(27px, 4vw, 38px);
+      letter-spacing: -1px;
+    }
+
+    .cta-box p {
+      max-width: 570px;
+      margin: 0 auto 27px;
+      color: #d7e5ff;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .cta-box .btn {
+      background: white;
+      color: #1765e8;
+      border-color: white;
+    }
+
+    .cta-box .btn:hover {
+      background: #eaf1ff;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 30px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: white;
+      border-top: 1px solid #e6edf7;
+    }
+
+    .footer-logo {
+      color: #1765e8;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    footer p {
+      color: #8490a4;
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #536078;
+      font-size: 12px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #1765e8;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 18px 5%;
+      }
+
+      .nav-links {
+        gap: 17px;
+      }
+
+      .main-section {
+        padding: 65px 5%;
+      }
+
+      .whole {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .bottom-cta {
+        padding: 0 5% 65px;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 620px) {
+      nav {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 5%;
+      }
+
+      .logo {
+        font-size: 26px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 17px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .nav-links .nav-cta {
+        padding: 9px 12px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 70px 6%;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .main-section {
+        padding: 60px 5%;
+      }
+
+      .whole {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .card {
+        padding: 28px 24px;
+      }
+
+      .bottom-cta {
+        padding: 0 5% 55px;
+      }
+
+      .cta-box {
+        padding: 42px 22px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 5%;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="glomin_main.html" class="logo">GLO<span>MIN</span></a>
+
+    <div class="nav-links">
+      <a href="glomin_main.html">Home</a>
+      <a href="about us.html">About Us</a>
+      <a href="contact us.html">Contact</a>
+      <a href="pricing.html" class="nav-cta">View Pricing ↗</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+
+      <span class="hero-tag">
+        INNOVATION · TECHNOLOGY · CREATIVITY
+      </span>
+
+      <h1>
+        Turning Ideas Into<br>
+        <span>Digital Reality.</span>
+      </h1>
+
+      <p>
+        Welcome to GLOMIN, where innovation meets imagination.
+        We transform creative ideas into powerful websites,
+        applications and digital experiences that help businesses
+        move forward.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="pricing.html" class="btn">
+          Explore Our Pricing <span class="arrow">→</span>
+        </a>
+
+        <a href="about us.html" class="btn btn-outline">
+          Discover GLOMIN
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- About, Contact and Pricing Cards -->
+  <section class="main-section" id="about">
+
+    <div class="section-heading">
+      <span class="section-label">Discover GLOMIN</span>
+
+      <h2>
+        Technology Built Around<br>
+        <span style="color:#1765e8;">Your Vision.</span>
+      </h2>
+
+      <p>
+        Great ideas deserve great digital solutions.
+        Discover who we are, connect with our team,
+        and find the right solution for your next project.
+      </p>
+    </div>
+
+    <div class="whole">
+
+      <!-- About Us -->
+      <article class="card">
+
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+          </svg>
+        </div>
+
+        <h2>About Us</h2>
+
+        <p>
+          Welcome to GLOMIN, where innovation meets imagination.
+          We are passionate about building the future through
+          technology, creativity and smart digital solutions.
+          Our mission is to transform your ideas into meaningful
+          digital experiences.
+        </p>
+
+        <a href="about us.html" class="btn">
+          Learn More <span class="arrow">→</span>
+        </a>
+
+      </article>
+
+      <!-- Contact Us -->
+      <article class="card" id="contact">
+
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m3 7 9 6 9-6"></path>
+          </svg>
+        </div>
+
+        <h2>Contact Us</h2>
+
+        <p>
+          Have an idea, a question or a project in mind?
+          We would love to hear from you. Connect with our team
+          to explore opportunities, discuss your requirements
+          and start building something extraordinary.
+        </p>
+
+        <a href="contact us.html" class="btn">
+          Get In Touch <span class="arrow">→</span>
+        </a>
+
+      </article>
+
+      <!-- Pricing -->
+      <article class="card">
+
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M3 10h18"></path>
+            <path d="M7 15h3"></path>
+          </svg>
+        </div>
+
+        <h2>Pricing Plans</h2>
+
+        <p>
+          Great technology should deliver real value.
+          Explore our pricing for websites, e-commerce stores,
+          custom web applications and mobile apps.
+          Find the right solution for your idea and budget.
+        </p>
+
+        <a href="pricing.html" class="btn">
+          View Pricing <span class="arrow">→</span>
+        </a>
+
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bottom-cta">
+    <div class="cta-box">
+
+      <h2>Have an Idea? Let's Build It.</h2>
+
+      <p>
+        Every great innovation starts with an idea.
+        Tell us what you want to create, and let's explore
+        how GLOMIN can help bring your vision to life.
+      </p>
+
+      <a href="contact us.html" class="btn">
+        Start Your Project <span class="arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="footer-logo">GLOMIN</div>
+
+    <p>© 2026 GLOMIN. All rights reserved.</p>
+
+    <div class="footer-links">
+      <a href="about us.html">About</a>
+      <a href="contact us.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
